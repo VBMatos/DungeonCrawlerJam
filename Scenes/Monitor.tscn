@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcjogf4genuvv"]
+
+[ext_resource type="Texture2D" uid="uid://cm1nva2u1go2p" path="res://Objects/SpaceShip/Monitor/monitor_texture.png" id="1_58d17"]
+[ext_resource type="Script" path="res://Scripts/Interactable.gd" id="1_61va5"]
+[ext_resource type="ArrayMesh" uid="uid://cjx4dryiy1yc8" path="res://Objects/SpaceShip/Monitor/Monitor.obj" id="2_bsed2"]
+[ext_resource type="AudioStream" uid="uid://b5drliuoxq5u" path="res://Audio/button.mp3" id="4_ohged"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5w10b"]
+albedo_texture = ExtResource("1_58d17")
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iiim6"]
+size = Vector3(0.3, 1.962, 2)
+
+[node name="Monitor" type="StaticBody3D" node_paths=PackedStringArray("audio1")]
+script = ExtResource("1_61va5")
+audio1 = NodePath("Accessing")
+
+[node name="Monitor" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.80825e-08, 0, 1, 0, 1.1, 0, -1.1, 0, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_5w10b")
+mesh = ExtResource("2_bsed2")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159994, 0.976041, 0)
+shape = SubResource("BoxShape3D_iiim6")
+
+[node name="Accessing" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_ohged")
+max_db = 2.0

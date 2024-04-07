@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bx5l8jibfnqfm"]
+
+[ext_resource type="Texture2D" uid="uid://beueg2e7esbfm" path="res://Objects/SpaceShip/SpaceShipCargoDoor/spaceshipcargodoor_texture.png" id="1_lnnb4"]
+[ext_resource type="Script" path="res://Scripts/Interactable.gd" id="1_wovex"]
+[ext_resource type="ArrayMesh" uid="uid://cji4vs7vxqpa4" path="res://Objects/SpaceShip/SpaceShipCargoDoor/SpaceShipCargoDoor.obj" id="2_4650b"]
+[ext_resource type="AudioStream" uid="uid://cjyesdeyhuatu" path="res://Audio/error-call-to-attention.mp3" id="3_m57ln"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sogdr"]
+albedo_texture = ExtResource("1_lnnb4")
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1jyb"]
+size = Vector3(3, 2.4, 0.2)
+
+[node name="SpaceShipCargoDoor" type="StaticBody3D" node_paths=PackedStringArray("audio1")]
+script = ExtResource("1_wovex")
+audio1 = NodePath("AudioError")
+
+[node name="SpaceShipCargoDoor" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_sogdr")
+mesh = ExtResource("2_4650b")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17775, -0.107156)
+shape = SubResource("BoxShape3D_l1jyb")
+
+[node name="AudioError" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_m57ln")
+volume_db = -1.0
+max_db = 2.0

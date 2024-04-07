@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dpqwcyevtqd6j"
+path="res://.godot/imported/CellSlot.obj-1c62c1b284e2c206a193435ed44e3a22.mesh"
+
+[deps]
+
+files=["res://.godot/imported/CellSlot.obj-1c62c1b284e2c206a193435ed44e3a22.mesh"]
+
+source_file="res://Objects/SpaceShip/CellSlot/CellSlot.obj"
+dest_files=["res://.godot/imported/CellSlot.obj-1c62c1b284e2c206a193435ed44e3a22.mesh", "res://.godot/imported/CellSlot.obj-1c62c1b284e2c206a193435ed44e3a22.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

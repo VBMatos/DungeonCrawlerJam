@@ -1,0 +1,147 @@
+[gd_scene load_steps=22 format=3 uid="uid://03iq2mcte23f"]
+
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_fr4y6"]
+[ext_resource type="PackedScene" uid="uid://dlahpfe3qoo2t" path="res://Scenes/Player.tscn" id="1_jpgwy"]
+[ext_resource type="PackedScene" uid="uid://bmljjtdvaqw7n" path="res://GUI/VerticalInventory.tscn" id="2_rkf0c"]
+[ext_resource type="Texture2D" uid="uid://bo4ijt1qsn3f2" path="res://Objects/Wall/Wall.png" id="2_te5s8"]
+[ext_resource type="Texture2D" uid="uid://8a5drwk08b4g" path="res://Objects/Wall/WallNormals.png" id="3_tnjuc"]
+[ext_resource type="ArrayMesh" uid="uid://dkn3kg5hi4d1s" path="res://Objects/Wall/Wall.obj" id="4_hxti2"]
+[ext_resource type="Texture2D" uid="uid://5h46g0hjmk2u" path="res://Objects/Floor/Floor.png" id="5_1b1bd"]
+[ext_resource type="Texture2D" uid="uid://bc54g0bq3bwr1" path="res://Objects/Floor/FloorNormals.png" id="6_dv3qe"]
+[ext_resource type="ArrayMesh" uid="uid://brixipymo67k" path="res://Objects/Floor/Floor.obj" id="7_dihgt"]
+[ext_resource type="Texture2D" uid="uid://djftx6a5pxf0r" path="res://Objects/SpaceShip/Ship/spaceship_texture.png" id="9_grxbi"]
+[ext_resource type="ArrayMesh" uid="uid://bfurjergyhsnw" path="res://Objects/SpaceShip/Ship/SpaceShip5.obj" id="10_5uhm0"]
+[ext_resource type="PackedScene" uid="uid://bcjogf4genuvv" path="res://Scenes/Monitor.tscn" id="10_piukn"]
+[ext_resource type="PackedScene" uid="uid://bx5l8jibfnqfm" path="res://Scenes/SpaceShipCargoDoor.tscn" id="14_1y22t"]
+[ext_resource type="PackedScene" uid="uid://dhdbrw3kvtx1j" path="res://Scenes/SpaceSuit2.tscn" id="14_6srgk"]
+[ext_resource type="PackedScene" uid="uid://cuvcfflij2e4m" path="res://Scenes/Lever.tscn" id="14_pk2ps"]
+[ext_resource type="PackedScene" uid="uid://dj3ll33rcbufv" path="res://Scenes/SpaceShipDoor.tscn" id="14_s05ra"]
+[ext_resource type="PackedScene" uid="uid://dxukebilmlvms" path="res://Scenes/CellSlot.tscn" id="15_lnt1r"]
+[ext_resource type="PackedScene" uid="uid://cewvkuld6n88t" path="res://Scenes/EnergyCell.tscn" id="16_1hh6o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlhku"]
+albedo_texture = ExtResource("2_te5s8")
+normal_enabled = true
+normal_texture = ExtResource("3_tnjuc")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axmg8"]
+albedo_texture = ExtResource("5_1b1bd")
+normal_enabled = true
+normal_texture = ExtResource("6_dv3qe")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccsap"]
+albedo_texture = ExtResource("9_grxbi")
+texture_filter = 0
+
+[node name="LevelWorld" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_fr4y6")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 17.0
+offset_top = 19.0
+offset_right = 302.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(1, 0.835294, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Life      |||||||
+Shield |||||||"
+
+[node name="VerticalInventory" parent="CanvasLayer" instance=ExtResource("2_rkf0c")]
+visible = false
+offset_left = -10.0
+offset_top = 9.0
+offset_right = 346.0
+offset_bottom = 41.0
+rotation = 1.57102
+scale = Vector2(2.97538, 2.97538)
+
+[node name="NewPlayer" parent="." instance=ExtResource("1_jpgwy")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.2, 1.12, -0.3)
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Cell" type="Node3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.9472)
+
+[node name="Wall13" type="MeshInstance3D" parent="Map/Cell"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, -1)
+material_override = SubResource("StandardMaterial3D_qlhku")
+mesh = ExtResource("4_hxti2")
+skeleton = NodePath("../../..")
+
+[node name="Wall14" type="MeshInstance3D" parent="Map/Cell"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -1, 1, 0)
+material_override = SubResource("StandardMaterial3D_qlhku")
+mesh = ExtResource("4_hxti2")
+skeleton = NodePath("../../..")
+
+[node name="Wall15" type="MeshInstance3D" parent="Map/Cell"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 1, 1)
+material_override = SubResource("StandardMaterial3D_qlhku")
+mesh = ExtResource("4_hxti2")
+skeleton = NodePath("../../..")
+
+[node name="Floor10" type="MeshInstance3D" parent="Map/Cell"]
+material_override = SubResource("StandardMaterial3D_axmg8")
+mesh = ExtResource("7_dihgt")
+skeleton = NodePath("../../..")
+
+[node name="Wall17" type="MeshInstance3D" parent="Map/Cell"]
+transform = Transform3D(1.19249e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.19249e-08, -5.21253e-16, 1, 1, 0)
+material_override = SubResource("StandardMaterial3D_qlhku")
+mesh = ExtResource("4_hxti2")
+skeleton = NodePath("../../..")
+
+[node name="SpaceShip" type="MeshInstance3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.401, -0.012, 3.488)
+material_override = SubResource("StandardMaterial3D_ccsap")
+mesh = ExtResource("10_5uhm0")
+skeleton = NodePath("../..")
+
+[node name="SpaceShipCargoDoor" parent="Map" instance=ExtResource("14_1y22t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0891967, 0, 5.04528)
+message = "[Cargo Door] - Need Energy Cells to open"
+simpleName = "CargoDoor"
+
+[node name="CellSlot" parent="Map" instance=ExtResource("15_lnt1r")]
+transform = Transform3D(-2.73746e-08, 0, 0.626258, 0, 0.626258, 0, -0.626258, 0, -2.73746e-08, 3.06158, 0.496918, 3.63113)
+message = "[Cell Slot] - Needs a new Cell"
+
+[node name="EnergyCell" parent="Map" instance=ExtResource("16_1hh6o")]
+transform = Transform3D(0.0354868, 0, -0.861058, 0, 0.861789, 0, 0.861058, 0, 0.0354868, -2.92767, 0.300222, 1.69639)
+message = "[Energy Cell] - Click to take"
+simpleName = "EnergyCell"
+
+[node name="Lever" parent="Map" instance=ExtResource("14_pk2ps")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.98762, 0.874849, 3.74466)
+message = "[Lever] - Click to Move/Attack"
+simpleName = "Lever"
+
+[node name="Monitor" parent="Map" instance=ExtResource("10_piukn")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2.984, 0.2, -0.308)
+message = "[Monitor] - Click to use"
+simpleName = "Monitor"
+
+[node name="SpaceSuit2" parent="Map" instance=ExtResource("14_6srgk")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -2.67478, 0.266782, -0.258806)
+message = "[SpaceSuit] - Click to Wear"
+simpleName = "SpaceSuit"
+
+[node name="SpaceShipDoor" parent="Map" instance=ExtResource("14_s05ra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325068, 0, -3.40518)
+message = "[Door] - Locked"
+simpleName = "SpaceShipDoor"
+
+[node name="CollisionBox" type="CSGBox3D" parent="Map"]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 4.40804, 0, 1, 0.809791)
+visible = false
+use_collision = true
+flip_faces = true
+size = Vector3(2, 2, 2)
+
+[connection signal="interacted" from="Map/SpaceSuit2" to="CanvasLayer" method="_on_space_suit_2_interacted"]

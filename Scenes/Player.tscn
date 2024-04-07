@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlahpfe3qoo2t"]
+
+[ext_resource type="Script" path="res://Scripts/NewPlayer.gd" id="1_t66bt"]
+[ext_resource type="AudioStream" uid="uid://d5k878vino5" path="res://Audio/concrete-footsteps.mp3" id="2_kijlw"]
+[ext_resource type="Resource" uid="uid://b0h2sss0hp7e8" path="res://Inventory/PlayerInventory.tres" id="2_lhvlq"]
+
+[sub_resource type="Animation" id="Animation_se4af"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tuore"]
+resource_name = "idle"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6mign"]
+resource_name = "walking"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0001, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.01, 0), Vector3(0, 0, 0), Vector3(0, -0.01, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nm21l"]
+_data = {
+"RESET": SubResource("Animation_se4af"),
+"idle": SubResource("Animation_tuore"),
+"walking": SubResource("Animation_6mign")
+}
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_t66bt")
+inventory = ExtResource("2_lhvlq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+fov = 90.0
+
+[node name="Prompt" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.5
+offset_top = -103.0
+offset_right = 50.5
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "aswq"
+horizontal_alignment = 1
+
+[node name="FrontRay" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -2)
+
+[node name="BackRay" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 2)
+
+[node name="LeftRay" type="RayCast3D" parent="."]
+target_position = Vector3(-2, 0, 0)
+
+[node name="RightRay" type="RayCast3D" parent="."]
+target_position = Vector3(2, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 0.25
+omni_range = 10.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nm21l")
+}
+
+[node name="AudioFootsteps" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_kijlw")
+volume_db = 5.0
+max_db = -3.0
+pitch_scale = 0.85

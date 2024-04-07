@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxukebilmlvms"]
+
+[ext_resource type="Texture2D" uid="uid://dmpdjlpc8oks8" path="res://Objects/SpaceShip/CellSlot/cellslot_texture.png" id="1_3y438"]
+[ext_resource type="Script" path="res://Scripts/Interactable.gd" id="1_c663e"]
+[ext_resource type="ArrayMesh" uid="uid://dpqwcyevtqd6j" path="res://Objects/SpaceShip/CellSlot/CellSlot.obj" id="1_qx638"]
+[ext_resource type="Resource" uid="uid://b0suj74nb5tsi" path="res://Inventory/Items/EnergyCell.tres" id="2_fe67w"]
+[ext_resource type="AudioStream" uid="uid://djpxl3oqqynkn" path="res://Audio/punch-boxing-02.mp3" id="4_85bu7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1t3m"]
+albedo_texture = ExtResource("1_3y438")
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k0gvr"]
+size = Vector3(2.2, 2.2, 0.5)
+
+[node name="CellSlot" type="StaticBody3D" node_paths=PackedStringArray("audio1")]
+script = ExtResource("1_c663e")
+audio1 = NodePath("AudioPutCell")
+itemRes = ExtResource("2_fe67w")
+message = "[Cell Slot] - Click to put a new Energy Cell"
+simpleName = "CellSlot"
+
+[node name="CellSlot" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_j1t3m")
+mesh = ExtResource("1_qx638")
+skeleton = NodePath("../../..")
+
+[node name="Slot" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02072, -0.32588)
+shape = SubResource("BoxShape3D_k0gvr")
+
+[node name="AudioPutCell" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_85bu7")
+unit_size = 9.0
+max_db = 1.0

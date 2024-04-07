@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://cuvcfflij2e4m"]
+
+[ext_resource type="Texture2D" uid="uid://bje1rtgp63r1r" path="res://Objects/SpaceShip/Lever/lever_texture.png" id="1_kbliq"]
+[ext_resource type="ArrayMesh" uid="uid://cy3ip0rklvd62" path="res://Objects/SpaceShip/Lever/Lever.obj" id="2_6isyw"]
+[ext_resource type="Script" path="res://Scripts/Interactable.gd" id="3_pibjw"]
+[ext_resource type="AudioStream" uid="uid://dkt3h8g6obyxu" path="res://Audio/locking.mp3" id="4_3lp21"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfhiu"]
+albedo_texture = ExtResource("1_kbliq")
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xcfea"]
+size = Vector3(2, 2, 0.3)
+
+[node name="Lever" type="StaticBody3D" node_paths=PackedStringArray("audio1")]
+script = ExtResource("3_pibjw")
+audio1 = NodePath("AudioLocking")
+
+[node name="Lever" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_nfhiu")
+mesh = ExtResource("2_6isyw")
+skeleton = NodePath("../../..")
+
+[node name="Push" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.378111, -0.153447)
+shape = SubResource("BoxShape3D_xcfea")
+
+[node name="AudioLocking" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_3lp21")
+unit_size = 9.0
+max_db = 2.0

@@ -1,0 +1,4 @@
+res://GUI/InventorySlot.tscn
+res://Inventory/PlayerInventory.tres
+res://Inventory/Items/EnergyCell.tres
+res://Inventory/InventoryItem.gd
