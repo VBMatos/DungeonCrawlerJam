@@ -1,4 +1,15 @@
-res://GUI/InventorySlot.tscn
+res://Scenes/LevelWorld.tscn
 res://Inventory/PlayerInventory.tres
 res://Inventory/Items/EnergyCell.tres
+res://Scenes/Player.tscn
+res://Scenes/CellSlot.tscn
+res://Scenes/EnergyCell.tscn
+res://GUI/Inventory.tscn
+res://GUI/Panel.tscn
+res://Scenes/Lever.tscn
+res://GUI/InventorySlot.tscn
 res://Inventory/InventoryItem.gd
+res://GUI/Inventory.gd
+res://Inventory/Inventory.gd
+res://GUI/ItemStack.gd
+res://Scripts/Interactable.gd

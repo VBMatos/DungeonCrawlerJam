@@ -2,7 +2,7 @@ class_name ItemStack extends Panel
 
 @onready var itemSprite := $Item
 
-var inventoryItem: InventoryItem
+var inventoryItem: ItemData
 
 func update():
 	if (!inventoryItem):

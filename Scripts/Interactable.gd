@@ -6,7 +6,7 @@ signal interacted(body)
 
 @export var audio1: AudioStreamPlayer3D
 @export var audio2: AudioStreamPlayer3D
-@export var itemRes: InventoryItem
+@export var itemRes: ItemData
 
 @export var message = ""
 @export var simpleName = ""

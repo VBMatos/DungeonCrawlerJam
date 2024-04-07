@@ -21,7 +21,7 @@ func connectSlots():
 
 func update():
 	for i in range(min(inventory.items.size(), slots.size())):
-		var inventoryItem : InventoryItem = inventory.items[i]
+		var inventoryItem : ItemData = inventory.items[i]
 		
 		if(!inventoryItem):
 			continue

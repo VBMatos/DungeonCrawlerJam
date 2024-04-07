@@ -1,10 +1,10 @@
 class_name Inventory extends Resource
 
-@export var items : Array[InventoryItem]
+@export var items : Array[ItemData]
 
 signal updated
 
-func insert(item : InventoryItem):
+func insert(item : ItemData):
 	for i in range(items.size()):
 		if(items[i] && items[i].name == item.name):
 			break
@@ -15,9 +15,9 @@ func insert(item : InventoryItem):
 	updated.emit()
 
 func removeItemAtIndex(index: int):
-	items[index] = InventoryItem.new()
+	items[index] = ItemData.new()
 	
-func insertSlot(index: int, inventoryItem: InventoryItem):
+func insertSlot(index: int, inventoryItem: ItemData):
 	var oldIndex: int = items.find(inventoryItem)
 	removeItemAtIndex(oldIndex)
 	
