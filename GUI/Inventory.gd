@@ -30,9 +30,11 @@ func update():
 		
 		if(!itemStack):
 			itemStack = itemStackClass.instantiate()
+			slots[i].tooltip_text = inventoryItem.name
 			slots[i].insert(itemStack)
 
 		itemStack.inventoryItem = inventoryItem
+		itemStack.tooltip_text = inventoryItem.name
 		itemStack.update()
 
 func onSlotClicked(slot):
@@ -45,6 +47,7 @@ func onSlotClicked(slot):
 
 func takeItemFromSlot(slot):
 	itemInHand = slot.takeItem()
+	slot.tooltip_text = ""
 	
 	add_child(itemInHand)
 	updateItemInHand()
@@ -56,6 +59,7 @@ func insertItemInSlot(slot):
 	itemInHand = null
 	
 	slot.insert(item)
+	slot.tooltip_text = item.inventoryItem.name
 
 func updateItemInHand():
 	if(!itemInHand):

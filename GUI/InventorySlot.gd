@@ -11,6 +11,7 @@ var index: int
 func insert(iStack : ItemStack):
 	itemStack = iStack
 	bgSprite.frame = 1
+	
 	container.add_child(itemStack)
 
 	if(!itemStack.inventoryItem || inventory.items[index] == itemStack.inventoryItem):
