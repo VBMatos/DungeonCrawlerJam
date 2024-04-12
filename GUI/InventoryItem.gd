@@ -1,4 +1,4 @@
-class_name ItemStack extends Panel
+class_name InventoryItem extends Panel
 
 @onready var itemSprite := $Item
 

@@ -5,28 +5,28 @@ extends Button
 
 @export var inventory = preload("res://Inventory/PlayerInventory.tres")
 
-var itemStack: ItemStack
+var inventoryItem: InventoryItem
 var index: int
 
-func insert(iStack : ItemStack):
-	itemStack = iStack
+func insert(invItem : InventoryItem):
+	inventoryItem = invItem
 	bgSprite.frame = 1
 	
-	container.add_child(itemStack)
+	container.add_child(inventoryItem)
 
-	if(!itemStack.inventoryItem || inventory.items[index] == itemStack.inventoryItem):
+	if(!inventoryItem.inventoryItem || inventory.items[index] == inventoryItem.inventoryItem):
 		return
 	
-	inventory.insertSlot(index, itemStack.inventoryItem)
+	inventory.insertSlot(index, inventoryItem.inventoryItem)
 
 func takeItem():
-	var item = itemStack
+	var item = inventoryItem
 	
-	container.remove_child(itemStack)
-	itemStack = null
+	container.remove_child(inventoryItem)
+	inventoryItem = null
 	bgSprite.frame = 0
 	
 	return item
 
 func isEmpty():
-	return !itemStack
+	return !inventoryItem

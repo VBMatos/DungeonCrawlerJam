@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://7eticb3fjdmt"]
 
-[ext_resource type="Script" path="res://GUI/ItemStack.gd" id="1_5sk3k"]
+[ext_resource type="Script" path="res://GUI/InventoryItem.gd" id="1_j3xb0"]
 
 [node name="Panel" type="Panel"]
-script = ExtResource("1_5sk3k")
+script = ExtResource("1_j3xb0")
 
 [node name="Item" type="Sprite2D" parent="."]

@@ -4,7 +4,7 @@ extends VBoxContainer
 @onready var itemStackClass = preload("res://GUI/Panel.tscn")
 @onready var slots : Array = $".".get_children()
 
-var itemInHand: ItemStack
+var itemInHand: InventoryItem
 
 func _ready():
 	connectSlots()
@@ -26,16 +26,16 @@ func update():
 		if(!inventoryItem):
 			continue
 			
-		var itemStack: ItemStack = slots[i].itemStack
+		var invItem: InventoryItem = slots[i].inventoryItem
 		
-		if(!itemStack):
-			itemStack = itemStackClass.instantiate()
+		if(!invItem):
+			invItem = itemStackClass.instantiate()
 			slots[i].tooltip_text = inventoryItem.name
-			slots[i].insert(itemStack)
+			slots[i].insert(invItem)
 
-		itemStack.inventoryItem = inventoryItem
-		itemStack.tooltip_text = inventoryItem.name
-		itemStack.update()
+		invItem.inventoryItem = inventoryItem
+		invItem.tooltip_text = inventoryItem.name
+		invItem.update()
 
 func onSlotClicked(slot):
 	if(slot.isEmpty() && itemInHand):
