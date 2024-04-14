@@ -8,6 +8,5 @@ res://GUI/Inventory.tscn
 res://GUI/Panel.tscn
 res://Scenes/Lever.tscn
 res://GUI/InventorySlot.tscn
-res://GUI/InventorySlot.gd
-res://GUI/ItemStack.gd
 res://GUI/Inventory.gd
+res://Scripts/HUD.gd

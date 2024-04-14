@@ -43,14 +43,17 @@ script = ExtResource("1_fr4y6")
 
 [node name="Stats" type="Label" parent="CanvasLayer"]
 visible = false
-offset_left = 30.0
-offset_top = 19.0
-offset_right = 315.0
-offset_bottom = 135.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -68.0
+offset_right = 522.0
+offset_bottom = -10.0
+grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0.835294, 0, 1)
 theme_override_font_sizes/font_size = 40
-text = "Life      |||||||
-Shield |||||||"
+text = "Life: 100% | Shield: 100%"
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("2_fscte")]
 visible = false
@@ -147,6 +150,7 @@ use_collision = true
 flip_faces = true
 size = Vector3(2, 2, 2)
 
+[connection signal="interacted" from="Map/CellSlot" to="CanvasLayer" method="_on_cell_slot_interacted"]
 [connection signal="interacted" from="Map/EnergyCell" to="CanvasLayer" method="_on_energy_cell_interacted"]
 [connection signal="interacted" from="Map/Monitor" to="CanvasLayer" method="_on_monitor_interacted"]
 [connection signal="interacted" from="Map/SpaceSuit" to="CanvasLayer" method="_on_space_suit_2_interacted"]
