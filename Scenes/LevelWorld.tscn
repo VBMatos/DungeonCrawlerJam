@@ -109,7 +109,7 @@ skeleton = NodePath("../..")
 
 [node name="SpaceShipCargoDoor" parent="Map" instance=ExtResource("14_1y22t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0891967, 0, 5.04528)
-message = "[Cargo Door] - Need Energy Cells to open"
+message = "[Cargo Door] - Needs Energy Cells to open"
 simpleName = "CargoDoor"
 
 [node name="CellSlot" parent="Map" instance=ExtResource("15_lnt1r")]
@@ -152,5 +152,6 @@ size = Vector3(2, 2, 2)
 
 [connection signal="interacted" from="Map/CellSlot" to="CanvasLayer" method="_on_cell_slot_interacted"]
 [connection signal="interacted" from="Map/EnergyCell" to="CanvasLayer" method="_on_energy_cell_interacted"]
+[connection signal="interacted" from="Map/Lever" to="CanvasLayer" method="_on_lever_interacted"]
 [connection signal="interacted" from="Map/Monitor" to="CanvasLayer" method="_on_monitor_interacted"]
 [connection signal="interacted" from="Map/SpaceSuit" to="CanvasLayer" method="_on_space_suit_2_interacted"]

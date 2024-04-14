@@ -1,14 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxukebilmlvms"]
+[gd_scene load_steps=10 format=3 uid="uid://dxukebilmlvms"]
 
-[ext_resource type="Texture2D" uid="uid://dmpdjlpc8oks8" path="res://Objects/SpaceShip/CellSlot/cellslot_texture.png" id="1_3y438"]
 [ext_resource type="Script" path="res://Scripts/Interactable.gd" id="1_c663e"]
-[ext_resource type="ArrayMesh" uid="uid://dpqwcyevtqd6j" path="res://Objects/SpaceShip/CellSlot/CellSlot.obj" id="1_qx638"]
 [ext_resource type="Resource" uid="uid://b0suj74nb5tsi" path="res://Inventory/Items/EnergyCell.tres" id="2_fe67w"]
 [ext_resource type="AudioStream" uid="uid://djpxl3oqqynkn" path="res://Audio/punch-boxing-02.mp3" id="4_85bu7"]
+[ext_resource type="Script" path="res://Objects/SpaceShip/CellSlot/CellSlot.gd" id="4_yhvpk"]
+[ext_resource type="Animation" uid="uid://b845d72s22py6" path="res://Objects/SpaceShip/CellSlot/animation_put_cell.res" id="6_kssf2"]
+[ext_resource type="PackedScene" uid="uid://b2qgotijglssu" path="res://Objects/SpaceShip/CellSlot/CellSlot.gltf" id="6_w6nyw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1t3m"]
-albedo_texture = ExtResource("1_3y438")
-texture_filter = 0
+[sub_resource type="Animation" id="Animation_xm52f"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gelae"]
+_data = {
+"animation_put_cell": ExtResource("6_kssf2"),
+"idle": SubResource("Animation_xm52f")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k0gvr"]
 size = Vector3(2.2, 2.2, 0.5)
@@ -20,10 +26,14 @@ itemRes = ExtResource("2_fe67w")
 message = "[Cell Slot] - Click to put a new Energy Cell"
 simpleName = "CellSlot"
 
-[node name="CellSlot" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_j1t3m")
-mesh = ExtResource("1_qx638")
-skeleton = NodePath("../../..")
+[node name="CellSlot2" parent="." instance=ExtResource("6_w6nyw")]
+script = ExtResource("4_yhvpk")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="CellSlot2"]
+autoplay = "Blockbench_Anim/animation_put_cell"
+libraries = {
+"Blockbench_Anim": SubResource("AnimationLibrary_gelae")
+}
 
 [node name="Slot" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02072, -0.32588)
