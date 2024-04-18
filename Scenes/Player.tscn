@@ -1,8 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlahpfe3qoo2t"]
+[gd_scene load_steps=11 format=3 uid="uid://dlahpfe3qoo2t"]
 
 [ext_resource type="Script" path="res://Scripts/NewPlayer.gd" id="1_t66bt"]
 [ext_resource type="AudioStream" uid="uid://d5k878vino5" path="res://Audio/concrete-footsteps.mp3" id="2_kijlw"]
 [ext_resource type="Resource" uid="uid://b0h2sss0hp7e8" path="res://Inventory/PlayerInventory.tres" id="2_lhvlq"]
+[ext_resource type="Shader" path="res://Scenes/Player.gdshader" id="3_jc02f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x007s"]
+render_priority = 0
+shader = ExtResource("3_jc02f")
+
+[sub_resource type="QuadMesh" id="QuadMesh_hnwn2"]
+material = SubResource("ShaderMaterial_x007s")
 
 [sub_resource type="Animation" id="Animation_se4af"]
 length = 0.001
@@ -64,6 +72,11 @@ inventory = ExtResource("2_lhvlq")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 fov = 90.0
+
+[node name="MeshShaderPixel" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(2.89585, 0, 0, 0, 1.69, 0, 0, 0, 1, 0, 0, -0.56039)
+mesh = SubResource("QuadMesh_hnwn2")
+skeleton = NodePath("../..")
 
 [node name="Prompt" type="Label" parent="."]
 anchors_preset = 7
