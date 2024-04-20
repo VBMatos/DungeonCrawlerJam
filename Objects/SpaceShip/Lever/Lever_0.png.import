@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beueg2e7esbfm"
-path.s3tc="res://.godot/imported/spaceshipcargodoor_texture.png-2aa2b6c5154ef1ec199b67329d9a9650.s3tc.ctex"
+uid="uid://dax8qugcdyhgn"
+path.s3tc="res://.godot/imported/Lever_0.png-0666c515a1324a1e078f170e007b6bda.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://Objects/SpaceShip/SpaceShipCargoDoor/spaceshipcargodoor_texture.png"
-dest_files=["res://.godot/imported/spaceshipcargodoor_texture.png-2aa2b6c5154ef1ec199b67329d9a9650.s3tc.ctex"]
+source_file="res://Objects/SpaceShip/Lever/Lever_0.png"
+dest_files=["res://.godot/imported/Lever_0.png-0666c515a1324a1e078f170e007b6bda.s3tc.ctex"]
 
 [params]
 

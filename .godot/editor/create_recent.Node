@@ -1,5 +1,8 @@
-MeshInstance3D
+Timer
 AnimationPlayer
+MeshInstance3D
+WorldEnvironment
+SpotLight3D
 Label
 Area3D
 Sprite2D
@@ -20,13 +23,11 @@ AudioListener3D
 CanvasLayer
 AudioStreamPlayer2D
 MarginContainer
-WorldEnvironment
 CSGBox3D
 Node3D
 CSGPolygon3D
 CSGMesh3D
 CollisionPolygon3D
-SpotLight3D
 OmniLight3D
 RayCast3D
 Camera3D

@@ -1,13 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bx5l8jibfnqfm"]
+[gd_scene load_steps=8 format=3 uid="uid://bx5l8jibfnqfm"]
 
-[ext_resource type="Texture2D" uid="uid://beueg2e7esbfm" path="res://Objects/SpaceShip/SpaceShipCargoDoor/spaceshipcargodoor_texture.png" id="1_lnnb4"]
 [ext_resource type="Script" path="res://Scripts/Interactable.gd" id="1_wovex"]
-[ext_resource type="ArrayMesh" uid="uid://cji4vs7vxqpa4" path="res://Objects/SpaceShip/SpaceShipCargoDoor/SpaceShipCargoDoor.obj" id="2_4650b"]
+[ext_resource type="PackedScene" uid="uid://bgca1lhy81ah3" path="res://Objects/SpaceShip/SpaceShipCargoDoor/SpaceShipCargoDoor.gltf" id="2_j6n3a"]
 [ext_resource type="AudioStream" uid="uid://cjyesdeyhuatu" path="res://Audio/error-call-to-attention.mp3" id="3_m57ln"]
+[ext_resource type="Script" path="res://Scenes/SpaceShipCardoDoor.gd" id="3_mwbo2"]
+[ext_resource type="Animation" uid="uid://dgbk8tedxsqkp" path="res://Objects/SpaceShip/SpaceShipCargoDoor/open_cargo_door_animation.res" id="3_qrwmg"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sogdr"]
-albedo_texture = ExtResource("1_lnnb4")
-texture_filter = 0
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fnhbm"]
+_data = {
+"open_cargo_door_animation": ExtResource("3_qrwmg")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l1jyb"]
 size = Vector3(3, 2.4, 0.2)
@@ -16,10 +18,14 @@ size = Vector3(3, 2.4, 0.2)
 script = ExtResource("1_wovex")
 audio1 = NodePath("AudioError")
 
-[node name="SpaceShipCargoDoor" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_sogdr")
-mesh = ExtResource("2_4650b")
-skeleton = NodePath("../../..")
+[node name="SpaceShipCargoDoor2" parent="." instance=ExtResource("2_j6n3a")]
+script = ExtResource("3_mwbo2")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="SpaceShipCargoDoor2"]
+autoplay = "Blockbench_Anim/open_cargo_door_animation"
+libraries = {
+"Blockbench_Anim": SubResource("AnimationLibrary_fnhbm")
+}
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17775, -0.107156)

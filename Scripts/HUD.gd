@@ -33,9 +33,12 @@ func _on_cell_slot_interacted(detected):
 		
 		anim.play("animation_put_cell")
 		Global.hasPutEnergyCell_L1 = true
-	
-	#Inicia animação de encaixe da Célula do cenário.
 
-func _on_lever_interacted(body):
+func _on_lever_interacted(detected):
 	if(Global.hasSapaceSuit && Global.hasPutEnergyCell_L1 && !Global.hasPushLever_L1):
-		pass #Start pushing animation.
+		var node: Node3D = detected.get_children()[0]
+		var anim: AnimationPlayer = node.get_children()[1]
+		
+		node.emitLeverPushing()
+		anim.play("push_lever_animation")
+		Global.hasPushLever_L1 = true
