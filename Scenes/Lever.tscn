@@ -27,6 +27,11 @@ libraries = {
 "Blockbench_Anim": SubResource("AnimationLibrary_1ooug")
 }
 
+[node name="Timer" type="Timer" parent="Lever2"]
+process_callback = 0
+wait_time = 0.5
+one_shot = true
+
 [node name="Push" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.378111, -0.153447)
 shape = SubResource("BoxShape3D_xcfea")
@@ -35,3 +40,5 @@ shape = SubResource("BoxShape3D_xcfea")
 stream = ExtResource("4_3lp21")
 unit_size = 9.0
 max_db = 2.0
+
+[connection signal="timeout" from="Lever2/Timer" to="Lever2" method="_on_timer_timeout"]

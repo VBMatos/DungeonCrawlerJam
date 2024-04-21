@@ -39,6 +39,6 @@ func _on_lever_interacted(detected):
 		var node: Node3D = detected.get_children()[0]
 		var anim: AnimationPlayer = node.get_children()[1]
 		
-		node.emitLeverPushing()
+		node.pushLever()
 		anim.play("push_lever_animation")
 		Global.hasPushLever_L1 = true

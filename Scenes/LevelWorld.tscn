@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c12ysqmuqoecb" path="res://GUI/Inventory.tscn" id="2_fscte"]
 [ext_resource type="Texture2D" uid="uid://bo4ijt1qsn3f2" path="res://Objects/Wall/Wall.png" id="2_te5s8"]
 [ext_resource type="Texture2D" uid="uid://8a5drwk08b4g" path="res://Objects/Wall/WallNormals.png" id="3_tnjuc"]
+[ext_resource type="PackedScene" uid="uid://bx5l8jibfnqfm" path="res://Scenes/SpaceShipCargoDoor.tscn" id="4_f676u"]
 [ext_resource type="ArrayMesh" uid="uid://dkn3kg5hi4d1s" path="res://Objects/Wall/Wall.obj" id="4_hxti2"]
 [ext_resource type="Texture2D" uid="uid://5h46g0hjmk2u" path="res://Objects/Floor/Floor.png" id="5_1b1bd"]
 [ext_resource type="Texture2D" uid="uid://bc54g0bq3bwr1" path="res://Objects/Floor/FloorNormals.png" id="6_dv3qe"]
@@ -12,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://djftx6a5pxf0r" path="res://Objects/SpaceShip/Ship/spaceship_texture.png" id="9_grxbi"]
 [ext_resource type="ArrayMesh" uid="uid://bfurjergyhsnw" path="res://Objects/SpaceShip/Ship/SpaceShip5.obj" id="10_5uhm0"]
 [ext_resource type="PackedScene" uid="uid://bcjogf4genuvv" path="res://Scenes/Monitor.tscn" id="10_piukn"]
-[ext_resource type="PackedScene" uid="uid://bx5l8jibfnqfm" path="res://Scenes/SpaceShipCargoDoor.tscn" id="14_1y22t"]
 [ext_resource type="PackedScene" uid="uid://dhdbrw3kvtx1j" path="res://Scenes/SpaceSuit2.tscn" id="14_6srgk"]
 [ext_resource type="PackedScene" uid="uid://cuvcfflij2e4m" path="res://Scenes/Lever.tscn" id="14_pk2ps"]
 [ext_resource type="PackedScene" uid="uid://dj3ll33rcbufv" path="res://Scenes/SpaceShipDoor.tscn" id="14_s05ra"]
@@ -107,9 +107,9 @@ material_override = SubResource("StandardMaterial3D_ccsap")
 mesh = ExtResource("10_5uhm0")
 skeleton = NodePath("../..")
 
-[node name="SpaceShipCargoDoor" parent="Map" instance=ExtResource("14_1y22t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0891967, 0, 5.04528)
-message = "[Cargo Door] - Needs Energy Cells to open"
+[node name="SpaceShipCargoDoor" parent="Map" instance=ExtResource("4_f676u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0847605, 0, 5.03158)
+message = "[Cargo Door] - Needs Energy to open"
 simpleName = "CargoDoor"
 
 [node name="CellSlot" parent="Map" instance=ExtResource("15_lnt1r")]
@@ -125,7 +125,7 @@ simpleName = "EnergyCell"
 
 [node name="Lever" parent="Map" instance=ExtResource("14_pk2ps")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.98762, 0.874849, 3.74466)
-message = "[Lever] - Click to Move/Attack"
+message = "[Lever] - Click to push"
 simpleName = "Lever"
 
 [node name="Monitor" parent="Map" instance=ExtResource("10_piukn")]
@@ -146,6 +146,12 @@ simpleName = "SpaceShipDoor"
 [node name="CollisionBox" type="CSGBox3D" parent="Map"]
 transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 4.40804, 0, 1, 0.809791)
 visible = false
+use_collision = true
+flip_faces = true
+size = Vector3(2, 2, 2)
+
+[node name="CollisionBox2" type="CSGBox3D" parent="Map/CollisionBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.99719)
 use_collision = true
 flip_faces = true
 size = Vector3(2, 2, 2)

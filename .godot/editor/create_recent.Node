@@ -30,4 +30,3 @@ CSGMesh3D
 CollisionPolygon3D
 OmniLight3D
 RayCast3D
-Camera3D
